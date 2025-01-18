@@ -124,4 +124,26 @@ document.addEventListener('DOMContentLoaded', function() {
         const urlWA = `https://api.whatsapp.com/send?phone=6281255173749&text=${encodeURIComponent(pesanWA)}`;
         window.open(urlWA);
     });
+
+    // Mencegah inspeksi
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    });
+    
+    document.addEventListener('keydown', function(e) {
+        // Mencegah F12
+        if (e.key === 'F12') {
+            e.preventDefault();
+        }
+        
+        // Mencegah Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C
+        if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) {
+            e.preventDefault();
+        }
+        
+        // Mencegah Ctrl+U (view source)
+        if (e.ctrlKey && e.key === 'u') {
+            e.preventDefault();
+        }
+    });
 });
